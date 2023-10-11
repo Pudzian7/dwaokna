@@ -1,0 +1,43 @@
+﻿<Window x:Class="DwaOkna.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DwaOkna"
+        mc:Ignorable="d"
+       
+        Title="Window2" Height="450" Width="600">
+    
+    <Grid>
+        <StackPanel>
+            <ToggleButton x:Name="ToggleInfo"
+                          Width="250" FontSize="17"
+                          Background="BurlyWood"
+                          IsChecked="{Binding ElementName=Info, Path=IsOpen}">Pokaż informację
+            
+            
+            <ToggleButton.Style>
+                <Style TargetType="{x:Type ToggleButton}">
+                    <Setter Property="Content" Value="Pokaż informację"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Content" Value="Ukryj informację"/>
+                                <Setter Property="FontStyle" Value="Italic"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+            </ToggleButton.Style>
+            </ToggleButton>
+            <Popup x:Name="Info" AllowsTransparency="true"
+                   PlacementTarget="{Binding ElementName=ToggleInfo}">
+  <WrapPanel Width="250">
+                    <TextBlock TextWrapping="Wrap" FontSize="20" Background="AliceBlue">
+                ToggleButton to przycisk, który posiada dwa stany: Zaznaczony i Niezaznaczony
+            </TextBlock>
+            </WrapPanel>
+            </Popup>
+    
+        </StackPanel>
+    </Grid>
+</Window>
